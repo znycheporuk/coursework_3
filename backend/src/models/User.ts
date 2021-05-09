@@ -7,7 +7,7 @@ interface UserAttributes {
   lastName: string;
   password: string;
   role: 'admin' | 'manager' | 'user'
-};
+}
 
 export interface IModel extends Model<UserAttributes, Optional<UserAttributes, 'id'>>, UserAttributes {
   createdAt: Date;
