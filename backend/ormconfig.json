@@ -1,0 +1,11 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "coursework_user",
+  "password": "Coursework_password1",
+  "database": "coursework_db",
+  "entities": ["dist/entity/**/*.js"],
+  "logging": false,
+  "synchronize": true
+}

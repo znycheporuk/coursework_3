@@ -1,20 +1,20 @@
 {
-  "version": "2.0.2",
   "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "ES5",
+      "ES6",
+      "DOM"
+    ],
     "outDir": "./dist",
-    "lib": ["es5", "es6"],
-    "target": "es6",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "rootDir": "./src",
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "CommonJS",
-    "resolveJsonModule": true,
-    "isolatedModules": true
-  },
-  "include": ["./src/**/*"]
+    "strictPropertyInitialization": false,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true
+  }
 }

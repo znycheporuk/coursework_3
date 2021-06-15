@@ -6,18 +6,22 @@ import json from 'koa-json';
 import logger from 'koa-logger';
 import session from 'koa-session';
 import 'reflect-metadata';
-import router from './routes/auth';
+import { createConnection } from 'typeorm';
+import router from './routes/user.routes';
 
 const app = new Koa();
 const port = process.env.PORT || 4000;
 
 app.keys = [ 'key', 'key key' ];
+console.log('asd');
 
 app.use(helmet());
 app.use(cors());
 app.use(json());
 app.use(logger());
 app.use(bodyParser());
+
+createConnection()
 
 const CONFIG = {
   key: 'key',
@@ -35,4 +39,3 @@ app.listen(port, () => {
   console.log(`🚀 App listening on the port ${ port }`);
 });
 
-export default {};
