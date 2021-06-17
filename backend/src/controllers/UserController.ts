@@ -1,66 +1,33 @@
-import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { User } from '../entity/User';
 
-export const getUsers = async (
-  req: Request,
-  res: Response,
-): Promise<Response> => {
-  const users = await getRepository(User).find();
-  return res.json(users);
-};
-
-export const getUser = async (
-  req: Request,
-  res: Response,
-): Promise<Response> => {
-  const results = await getRepository(User).findOne(req.params.id);
-  return res.json(results);
-};
-
-export const createUser = async (
-  req: Request,
-  res: Response,
-): Promise<Response> => {
-  const newUser = await getRepository(User).create(req.body);
-  const results = await getRepository(User).save(newUser);
-  return res.json(results);
-};
-
-export const updateUser = async (
-  req: Request,
-  res: Response,
-): Promise<Response> => {
-  const user = await getRepository(User).findOne(req.params.id);
-  if (user) {
-    getRepository(User).merge(user, req.body);
-    const results = await getRepository(User).save(user);
-    return res.json(results);
-  }
-
-  return res.json({ msg: 'Not user found' });
-};
-
-export const deleteUser = async (req: Request, res: Response): Promise<Response> => {
-  const results = await getRepository(User).delete(req.params.id);
-  return res.json(results);
-};
 
 export const UsersController = {
 
-  async getAll(): Promise<User[]> {
-    try {
-      return await getRepository(User).find();
-    } catch (err) {
-      console.log(err);
-      return [];
-    }
+  async getAll() {
+    return getRepository(User).find();
   },
 
   async getByID(id: number) {
     return getRepository(User).findOne({ id });
   },
+
   async create(user: User) {
-    return getRepository(User).save(user);
+    const newUser = getRepository(User).create(user);
+    return getRepository(User).save(newUser);
   },
+
+  async update(updateUserData: User) {
+    const user = await getRepository(User).findOne(updateUserData.id);
+    if (user) {
+      getRepository(User).merge(user, updateUserData);
+      return getRepository(User).save(user);
+    }
+    throw new Error('Такого користувача не знайдено');
+  },
+
+  async delete(id: string) {
+    return getRepository(User).delete(id);
+  },
+
 };

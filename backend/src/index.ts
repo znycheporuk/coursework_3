@@ -7,13 +7,12 @@ import logger from 'koa-logger';
 import session from 'koa-session';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import router from './routes/user.routes';
+import router from './routes/auth';
 
 const app = new Koa();
 const port = process.env.PORT || 4000;
 
 app.keys = [ 'key', 'key key' ];
-console.log('asd');
 
 app.use(helmet());
 app.use(cors());
@@ -21,7 +20,9 @@ app.use(json());
 app.use(logger());
 app.use(bodyParser());
 
-createConnection()
+createConnection().then(()=>{
+  console.log('DB connected')
+})
 
 const CONFIG = {
   key: 'key',
@@ -34,8 +35,7 @@ app.use(session(CONFIG, app));
 
 app.use(router.routes()).use(router.allowedMethods());
 
-
 app.listen(port, () => {
-  console.log(`🚀 App listening on the port ${ port }`);
+  console.log(`App listening on the port ${ port }`);
 });
 
