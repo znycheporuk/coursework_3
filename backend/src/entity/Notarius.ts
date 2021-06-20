@@ -10,7 +10,7 @@ export class Notarius {
   fullName: string;
 
   @Column()
-  certificateNumber: string;
+  certificateNumber: number;
 
   @Column()
   organizationName: string;
@@ -19,7 +19,7 @@ export class Notarius {
   notarialRegion: string;
 
   @Column()
-  phoneNumber: string;
+  phoneNumber: number;
 
   @Column()
   certificationDate: string;

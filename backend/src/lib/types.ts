@@ -1,19 +1,12 @@
 export type UserRoles = 'notarius' | 'registrar'
 
-export interface UserSignUpData {
-  name: string
-  person: 'individual' | 'legal'
-  IDN: string
-  reasonOfAbsence: string
-}
-
 export interface IRegisterNotarius {
   username: string
   fullName: string
-  certificateNumber: string
+  certificateNumber: number
   organizationName: string
   notarialRegion: string
-  phoneNumber: string
+  phoneNumber: number
   certificationDate: string
   cardDate: string
   districtRegistrationDate: string
@@ -36,4 +29,18 @@ export interface SignUpValues {
 export interface SignInValues {
   username: string
   password: string
+}
+
+export interface IPowerOfAttorney {
+  id?: number;
+  series: string;
+  number: number;
+  issuedTo: string;
+  taxNumber: number;
+  validUntil: string;
+  active: boolean;
+  additionalInfo: string;
+  notariusId: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

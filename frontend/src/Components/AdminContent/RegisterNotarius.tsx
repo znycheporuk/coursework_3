@@ -7,17 +7,8 @@ import { registerNotarius } from '../../dal/notaries';
 import moment from 'moment';
 import { IRegisterNotarius } from '../../lib/types';
 import { useHistory } from 'react-router-dom';
-
-const dateFormat = 'DD.MM.YYYY';
-
-const convertObjWithMomentFields = (obj: Record<string, any>) => {
-  for (const [ key, value ] of Object.entries(obj)) {
-    if (value._isAMomentObject) {
-      obj[key] = value.format(dateFormat)
-    }
-  }
-};
-
+import { convertObjWithMomentFields } from '../../utils/convertObjWithMomentFields';
+import { dateFormat } from '../../lib/constants';
 
 export const RegisterNotarius: FC = () => {
   const [ form ] = useForm<IRegisterNotarius>();
@@ -55,7 +46,7 @@ export const RegisterNotarius: FC = () => {
           <Input/>
         </Form.Item>
         <Form.Item name='certificateNumber' label='Номер сертифікату' rules={ [ required, len(8) ] }>
-          <Input/>
+          <Input type='number'defaultValue={undefined}/>
         </Form.Item>
         <Form.Item name='organizationName' label='Назва організації' rules={ [ required, min(5), max(20) ] }>
           <Input/>
@@ -63,8 +54,8 @@ export const RegisterNotarius: FC = () => {
         <Form.Item name='notarialRegion' label='Нотаріальний регіон' rules={ [ required, min(5), max(20) ] }>
           <Input/>
         </Form.Item>
-        <Form.Item name='phoneNumber' label='Номер телефону' rules={ [ required, len(13)] }>
-          <Input/>
+        <Form.Item name='phoneNumber' label='Номер телефону' rules={ [ required, len(9)] }>
+          <Input type='number' addonBefore='+380' defaultValue={undefined}/>
         </Form.Item>
         <Form.Item name='certificationDate' label='Дата видачі свідоцтва' rules={ [ required ] }>
           <DatePicker placeholder='' format={ dateFormat }/>

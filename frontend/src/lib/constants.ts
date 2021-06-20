@@ -8,3 +8,5 @@ export const api = {
 };
 
 export const defaultErrorMessage = 'Щось пішло не так, спробуйте пізніше';
+
+export const dateFormat = 'DD.MM.YYYY';

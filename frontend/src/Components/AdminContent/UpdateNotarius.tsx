@@ -8,16 +8,9 @@ import { len, max, min, required } from '../../utils/validators';
 import { Loader } from '../Common/Preloader';
 import { useForm } from 'antd/lib/form/Form';
 import { defaultErrorHandler } from '../../utils/defaultErrorHandler';
+import { convertObjWithMomentFields } from '../../utils/convertObjWithMomentFields';
+import { dateFormat } from '../../lib/constants';
 
-const dateFormat = 'DD.MM.YYYY';
-
-const convertObjWithMomentFields = (obj: Record<string, any>) => {
-  for (const [ key, value ] of Object.entries(obj)) {
-    if (value._isAMomentObject) {
-      obj[key] = value.format(dateFormat);
-    }
-  }
-};
 
 export const UpdateNotarius: FC = () => {
   const [ notariusData, setNotariusData ] = useState<IRegisterNotarius | null>(null);
@@ -55,7 +48,7 @@ export const UpdateNotarius: FC = () => {
         layout="horizontal"
         name='update-notarius'
         requiredMark='optional'
-        initialValues={  {
+        initialValues={ {
           ...notariusData,
           certificationDate: moment(notariusData.certificationDate, dateFormat),
           cardDate: moment(notariusData.cardDate, dateFormat),
@@ -69,7 +62,7 @@ export const UpdateNotarius: FC = () => {
           <Input/>
         </Form.Item>
         <Form.Item name='certificateNumber' label='Номер сертифікату' rules={ [ required, len(8) ] }>
-          <Input/>
+          <Input type='number' defaultValue={ undefined }/>
         </Form.Item>
         <Form.Item name='organizationName' label='Назва організації' rules={ [ required, min(5), max(20) ] }>
           <Input/>
@@ -77,8 +70,8 @@ export const UpdateNotarius: FC = () => {
         <Form.Item name='notarialRegion' label='Нотаріальний регіон' rules={ [ required, min(5), max(20) ] }>
           <Input/>
         </Form.Item>
-        <Form.Item name='phoneNumber' label='Номер телефону' rules={ [ required, len(13) ] }>
-          <Input/>
+        <Form.Item name='phoneNumber' label='Номер телефону' rules={ [ required, len(9) ] }>
+          <Input type='number' addonBefore='+380' defaultValue={ undefined }/>
         </Form.Item>
         <Form.Item name='certificationDate' label='Дата видачі свідоцтва' rules={ [ required ] }>
           <DatePicker placeholder='' format={ dateFormat }/>
