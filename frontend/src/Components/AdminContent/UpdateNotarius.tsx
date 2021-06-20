@@ -36,7 +36,7 @@ export const UpdateNotarius: FC = () => {
       const values = await form.validateFields();
       convertObjWithMomentFields(values);
 
-      await updateNotarius(values);
+      await updateNotarius({ ...values, id });
       form.submit();
       form.resetFields();
       history.push('/notaries');

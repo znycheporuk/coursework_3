@@ -4,7 +4,6 @@ import { useRecoilValue } from 'recoil';
 import { INotarius } from '../../lib/types';
 import { getNotaries, updateNotarius } from '../../dal/notaries';
 import { roleSelector } from '../../recoil/auth';
-import { Page403 } from '../Common/ErrorPages/403';
 import { useHistory } from 'react-router-dom';
 
 
@@ -87,7 +86,7 @@ export const Notaries: FC = () => {
 
   return (
     <>
-      <h2>Нотаріуси</h2>
+      <h2 style={{margin:'20px 0'}}>Нотаріуси</h2>
       <Table columns={ columns } dataSource={ data } pagination={ { position: [ 'bottomCenter' ] } }
              loading={ !notaries }/>
     </>
