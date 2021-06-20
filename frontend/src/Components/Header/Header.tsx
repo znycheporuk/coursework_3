@@ -16,14 +16,16 @@ export const Header: FC = () => {
         <Menu.Item>
           <NavLink to='/'>Головна сторінка</NavLink>
         </Menu.Item>
-        {/*{ role === 'registrar' &&*/ }
-        <Menu.Item>
-          <NavLink to='/register-notarius'>Зареєструвати нотаріуса</NavLink>
-        </Menu.Item>
-        <Menu.Item>
-          <NavLink to='/notaries'>Нотаріуси</NavLink>
-        </Menu.Item>
-        {/*}*/ }
+        { role === 'registrar' &&
+        <>
+          <Menu.Item>
+            <NavLink to='/register-notarius'>Зареєструвати нотаріуса</NavLink>
+          </Menu.Item>
+          <Menu.Item>
+            <NavLink to='/notaries'>Нотаріуси</NavLink>
+          </Menu.Item>
+        </>
+        }
 
       </Menu>
       <AuthMenu/>

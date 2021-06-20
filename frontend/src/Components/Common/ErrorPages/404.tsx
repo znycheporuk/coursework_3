@@ -12,10 +12,10 @@ export const Page404: FC<Props> = (props) => {
     <Result
       status="404"
       title="404"
-      subTitle={ props.text || 'Sorry, the page you visited does not exist.' }
+      subTitle={ props.text || 'Такої сторінки не існує.' }
       extra={ [
-        <Button key='previous' onClick={ () => history.goBack() }>Back to previous screen</Button>,
-        <Button key='home' type="primary" onClick={ () => history.push('/') }>Back to home page</Button>,
+        <Button key='previous' onClick={ () => history.goBack() }>На попередню сторінку</Button>,
+        <Button key='home' type="primary" onClick={ () => history.push('/') }>На головну сторінку</Button>,
       ] }
     />
   );

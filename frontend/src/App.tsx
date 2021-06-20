@@ -23,20 +23,18 @@ export const App: FC = () => {
           <Content className='App'>
             <Switch>
               <Route exact path='/'/>
-              <CustomRoute path='/register-notarius' anonymous={ RegisterNotarius } registrar={ RegisterNotarius }/>
-              <CustomRoute path='/notaries' anonymous={ Notaries } registrar={ Notaries }/>
+              <CustomRoute path='/register-notarius' registrar={ RegisterNotarius }/>
+              <CustomRoute path='/notaries' registrar={ Notaries }/>
+              <CustomRoute path="/update-notarius/:id" registrar={ UpdateNotarius }/>
               <CustomRoute path='/register-power-of-attorney' anonymous={ PowerOfAttorney }/>
               <CustomRoute path='/sign-in' anonymous={ SignIn }/>
               <CustomRoute path='/sign-up' anonymous={ SignUp }/>
-              <Route path="/update-notarius/:id">
-                <UpdateNotarius/>
-              </Route>
+
               <Route><Page404/></Route>
             </Switch>
           </Content>
         </Layout>
       </Layout>
     </Layout>
-
   );
 };

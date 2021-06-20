@@ -12,10 +12,10 @@ export const Page403: FC<Props> = (props) => {
     <Result
       status="403"
       title="403"
-      subTitle={ props.text || 'Sorry, you are not authorized to access this page.' }
+      subTitle={ props.text || 'У вас недостраньо прав доступу, щоб переглядати дану сторінку.' }
       extra={ [
-        <Button key='previous' onClick={ () => history.goBack() }>Back to previous screen</Button>,
-        <Button key='home' type="primary" onClick={ () => history.push('/') }>Back to home page</Button>,
+        <Button key='previous' onClick={ () => history.goBack() }>На попередню сторінку</Button>,
+        <Button key='home' type="primary" onClick={ () => history.push('/') }>На головну сторінку</Button>,
       ] }
     />
   );

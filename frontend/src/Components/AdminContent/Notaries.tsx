@@ -24,9 +24,7 @@ export const Notaries: FC = () => {
       setNotaries(await getNotaries());
     })();
   }, []);
-  // if (role !== 'registrar') {
-  //   return <Page403/>;
-  // }
+
   const columns = [
     {
       title: 'Логін',
