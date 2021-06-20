@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { api } from '../lib/constants';
 import { defaultResponseErrorHandler } from '../utils/defaultErrorHandler';
-import { SignInValues, SignUpValues } from '../lib/types';
+import { SignInValues, SignUpValues, UserRoles } from '../lib/types';
 
 export const signOut = async (): Promise<boolean> => {
   try {
@@ -30,6 +30,3 @@ export const signUp = async (values: SignUpValues) => {
     await defaultResponseErrorHandler(err);
   }
 };
-
-
-

@@ -6,7 +6,7 @@ import { signUp } from '../../dal/auth';
 import { useHistory } from 'react-router-dom';
 import { SignUpValues } from '../../lib/types';
 import { useRecoilState } from 'recoil';
-import { userDataAtom, userIdSelector } from '../../recoil/auth';
+import { userDataAtom } from '../../recoil/auth';
 
 
 export const SignUp: FC = () => {
@@ -26,25 +26,28 @@ export const SignUp: FC = () => {
   };
 
   return (
-    <Form form={ form } name='sign-in' layout='horizontal' requiredMark='optional'>
-      <Form.Item name='username' label='Логін' rules={ [ required, min(6) ] }>
-        <Input/>
-      </Form.Item>
-      <Form.Item name='password' label='Пароль' rules={ [ required, min(6) ] }>
-        <Input/>
-      </Form.Item>
-      <Form.Item name='role' label='Роль' rules={ [ required ] }>
-        <Select defaultValue='notarius'>
-          <Select.Option value='registrar'>
-            Реєстратор
-          </Select.Option>
-          <Select.Option value='notarius'>
-            Нотаріус
-          </Select.Option>
-        </Select>
-      </Form.Item>
+    <>
+      <h2>Реєстрація</h2>
+      <Form form={ form } name='sign-in' layout='horizontal' requiredMark='optional'>
+        <Form.Item name='username' label='Логін' rules={ [ required, min(6) ] }>
+          <Input/>
+        </Form.Item>
+        <Form.Item name='password' label='Пароль' rules={ [ required, min(6) ] }>
+          <Input.Password/>
+        </Form.Item>
+        <Form.Item name='role' label='Роль' rules={ [ required ] }>
+          <Select>
+            <Select.Option value='registrar'>
+              Реєстратор
+            </Select.Option>
+            <Select.Option value='notarius'>
+              Нотаріус
+            </Select.Option>
+          </Select>
+        </Form.Item>
 
-      <Button type='primary' onClick={ onSubmit }>Зареєструватися</Button>
-    </Form>
+        <Button type='primary' onClick={ onSubmit }>Зареєструватися</Button>
+      </Form>
+    </>
   );
 };

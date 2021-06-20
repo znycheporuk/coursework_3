@@ -8,6 +8,7 @@ import session from 'koa-session';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import router from './routes/auth';
+import notariesRouter from './routes/notaries';
 
 const app = new Koa();
 const port = process.env.PORT || 4000;
@@ -34,6 +35,7 @@ const CONFIG = {
 app.use(session(CONFIG, app));
 
 app.use(router.routes()).use(router.allowedMethods());
+app.use(notariesRouter.routes()).use(notariesRouter.allowedMethods());
 
 app.listen(port, () => {
   console.log(`App listening on the port ${ port }`);

@@ -1,12 +1,10 @@
 import { message } from 'antd';
+import { defaultErrorMessage } from '../lib/constants';
 
 export const defaultErrorHandler = async (err: Error) => {
-  console.log(err);
-  await message.error(err.message);
+  await message.error(err.message || defaultErrorMessage);
 };
+
 export const defaultResponseErrorHandler = async (err: any) => {
-  debugger
-  err = err.response;
-  console.log(err);
-  await message.error(err.data.message);
+  await message.error(err.response.data.message || defaultErrorMessage);
 };

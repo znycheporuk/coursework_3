@@ -7,6 +7,26 @@ export interface UserSignUpData {
   reasonOfAbsence: string
 }
 
+export interface IRegisterNotarius {
+  username: string
+  fullName: string
+  certificateNumber: string
+  organizationName: string
+  notarialRegion: string
+  phoneNumber: string
+  certificationDate: string
+  cardDate: string
+  districtRegistrationDate: string
+  place: string
+  region: string
+  password: string
+}
+
+export interface INotarius extends Omit<IRegisterNotarius, 'password'> {
+  id: string
+  active: boolean
+}
+
 export interface SignUpValues {
   username: string
   password: string

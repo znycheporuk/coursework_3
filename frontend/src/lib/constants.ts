@@ -3,7 +3,8 @@ export const api = {
   signInEndpoint: '/sign-in',
   signUpEndpoint: '/sign-up',
   signOutEndpoint: '/sign-out',
-  registerRegistrarEndpoint: '/register-registrar',
+  registerNotariusEndpoint: '/register-notarius',
+  getNotariesEndpoint: '/notaries',
 };
 
 export const defaultErrorMessage = 'Щось пішло не так, спробуйте пізніше';

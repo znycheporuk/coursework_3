@@ -2,7 +2,7 @@ import { atom, selector } from 'recoil';
 import { UserRoles } from '../lib/types';
 
 interface UserData {
-  id: number,
+  id: string,
   username: string,
   role: UserRoles
 }
@@ -20,11 +20,11 @@ export const roleSelector = selector<UserRoles | null>({
   },
 });
 
-export const userIdSelector = selector<number>({
+export const userIdSelector = selector<string>({
   key: 'userId',
   get: ({ get }) => {
     const user = get(userDataAtom);
-    return user?.id ?? 0;
+    return user?.id ?? '';
   },
 });
 

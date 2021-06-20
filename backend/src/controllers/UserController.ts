@@ -8,8 +8,12 @@ export const UsersController = {
     return getRepository(User).find();
   },
 
-  async getByID(id: number) {
+  async getByID(id: string) {
     return getRepository(User).findOne({ id });
+  },
+
+  async getByName(username: string) {
+    return getRepository(User).findOne({ username });
   },
 
   async create(user: User) {

@@ -30,7 +30,7 @@ export const isAdmin = (ctx: ParameterizedContext<any, Router.IRouterParamContex
 };
 
 
-const pbkdf2 = (password: string, salt: string) => promisify(crypto.pbkdf2)(password, salt, 1e5, 64, 'sha512');
+const pbkdf2 = (password: string, salt: string) => promisify(crypto.pbkdf2)(password, salt, 1e5, 32, 'sha512');
 
 export const hashPassword = async (password: string) => {
   const salt = crypto.randomBytes(6).toString('base64');

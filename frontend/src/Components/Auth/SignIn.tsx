@@ -26,14 +26,17 @@ export const SignIn: FC = () => {
   };
 
   return (
-    <Form form={ form } name='sign-in' layout='horizontal' requiredMark='optional'>
-      <Form.Item name='username' label='Логін' rules={ [ required, min(6) ] }>
-        <Input/>
-      </Form.Item>
-      <Form.Item name='password' label='Пароль' rules={ [ required, min(6) ] }>
-        <Input/>
-      </Form.Item>
-      <Button type='primary' onClick={ onSubmit }>Увійти</Button>
-    </Form>
+    <>
+      <h2>Увійти</h2>
+      <Form form={ form } name='sign-in' layout='horizontal' requiredMark='optional'>
+        <Form.Item name='username' label='Логін' rules={ [ required, min(6) ] }>
+          <Input/>
+        </Form.Item>
+        <Form.Item name='password' label='Пароль' rules={ [ required, min(6) ] }>
+          <Input.Password/>
+        </Form.Item>
+        <Button type='primary' onClick={ onSubmit }>Увійти</Button>
+      </Form>
+    </>
   );
 };

@@ -30,6 +30,7 @@ router
     const { hash, salt } = await hashPassword(password);
 
     const user = await UsersController.create({ username, hash, salt, role });
+    ctx.status = 201;
     ctx.session.role = user.role;
     ctx.session.userId = user.id;
     ctx.body = {
@@ -46,6 +47,7 @@ router
     });
     if (user && ctx.session) {
       if (await isPasswordCorrect(password, user?.hash, user?.salt)) {
+        ctx.status = 200;
         ctx.session.role = user.role;
         ctx.session.userId = user.id;
         ctx.body = {

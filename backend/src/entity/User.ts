@@ -1,10 +1,11 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { UserRoles } from '../lib/types';
 
 @Entity()
 export class User {
 
-  @PrimaryGeneratedColumn()
-  id?: number;
+  @PrimaryGeneratedColumn('uuid')
+  id?: string;
 
   @Column()
   username: string;
@@ -16,12 +17,12 @@ export class User {
   salt: string;
 
   @Column()
-  role: string;
+  role: UserRoles;
 
   @CreateDateColumn()
-  created_at?: Date;
+  createdAt?: Date;
 
   @UpdateDateColumn()
-  updated_at?: Date;
+  updatedAt?: Date;
 
 }
