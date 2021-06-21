@@ -22,7 +22,7 @@ export const UpdateNotarius: FC = () => {
     (async () => {
       setNotariusData(await getNotariusByID(id));
     })();
-  }, []);
+  }, [id]);
 
   const onOk = async () => {
     try {

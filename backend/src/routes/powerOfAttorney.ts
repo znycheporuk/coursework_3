@@ -40,7 +40,6 @@ powerOfAttorneyRouter
   .get('/power-of-attorney/:series/:number', async (ctx, next) => {
     const { series, number } = ctx.params;
     const PoA = await PowerOfAttorneyController.getBySerialNumber(series, Number(number));
-    console.log(PoA);
     if (PoA) {
       ctx.body = PoA;
       ctx.status = 200;

@@ -3,9 +3,17 @@ import { IPowerOfAttorneyWithNotariusData } from '../../lib/types';
 import { getPowerOfAttorneyBySerialNumber } from '../../dal/powerOfAttorney';
 import { useParams } from 'react-router-dom';
 
+interface FormData {
+  series: string,
+  number: number
+}
 
-export const PowerOfAttorney: FC = () => {
-  const { series, number } = useParams<{ series: string, number: string }>();
+export const PowerOfAttorney: FC<Partial<FormData>> = (props) => {
+  let { series, number } = useParams<{ series: string, number: string }>();
+  if (props.number && props.series) {
+    series = props.series;
+    number = String(props.number);
+  }
   const [ PoA, setPoA ] = useState<IPowerOfAttorneyWithNotariusData | null>(null);
 
   useEffect(() => {
@@ -13,7 +21,7 @@ export const PowerOfAttorney: FC = () => {
       setPoA(await getPowerOfAttorneyBySerialNumber(series, Number(number)));
 
     })();
-  }, []);
+  }, [series, number]);
   return (
     <>
       <h2>Довіреність</h2>

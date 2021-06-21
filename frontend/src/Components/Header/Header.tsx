@@ -16,6 +16,9 @@ export const Header: FC = () => {
         <Menu.Item>
           <NavLink to='/'>Головна сторінка</NavLink>
         </Menu.Item>
+        <Menu.Item>
+          <NavLink to='/check-power-of-attorney'>Перевірити довіреність</NavLink>
+        </Menu.Item>
         { role === 'registrar' &&
         <>
           <Menu.Item>

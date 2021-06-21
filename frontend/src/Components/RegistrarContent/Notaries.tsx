@@ -1,16 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Button, Table } from 'antd';
-import { useRecoilValue } from 'recoil';
 import { INotarius } from '../../lib/types';
 import { getNotaries, updateNotarius } from '../../dal/notaries';
-import { roleSelector } from '../../recoil/auth';
 import { useHistory } from 'react-router-dom';
 
 
 export const Notaries: FC = () => {
 
   const [ notaries, setNotaries ] = useState<INotarius[]>([]);
-  const role = useRecoilValue(roleSelector);
   const history = useHistory();
 
   const updateAndReloadNotarius = async (notarius: Partial<INotarius>) => {

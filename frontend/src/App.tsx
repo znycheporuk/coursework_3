@@ -6,13 +6,15 @@ import { Route, Switch } from 'react-router-dom';
 import { CustomRoute } from './Components/Common/CustomRoute';
 import { Header } from './Components/Header/Header';
 import { Page404 } from './Components/Common/ErrorPages/404';
-import { RegisterPowerOfAttorney } from './Components/NotariusContent/RegisterPowerOfAttorney';
+import { RegisterPowerOfAttorney } from './Components/PowerOfAttorney/RegisterPowerOfAttorney';
 import { SignIn } from './Components/Auth/SignIn';
 import { SignUp } from './Components/Auth/SignUp';
 import { Notaries } from './Components/RegistrarContent/Notaries';
 import { UpdateNotarius } from './Components/RegistrarContent/UpdateNotarius';
-import { PowerOfAttorneyTable } from './Components/NotariusContent/PowerOfAttorneyTable';
-import { PowerOfAttorney } from './Components/NotariusContent/PowerOfAttorney';
+import { PowerOfAttorneyTable } from './Components/PowerOfAttorney/PowerOfAttorneyTable';
+import { PowerOfAttorney } from './Components/PowerOfAttorney/PowerOfAttorney';
+import { CheckPowerOfAttorney } from './Components/PowerOfAttorney/CheckPowerOfAttorney';
+import { MainPage } from './Components/MainPage';
 
 const { Content } = Layout;
 
@@ -24,7 +26,7 @@ export const App: FC = () => {
         <Layout>
           <Content className='App'>
             <Switch>
-              <Route exact path='/'/>
+              <Route exact path='/' component={MainPage}/>
               <CustomRoute path='/register-notarius' registrar={ RegisterNotarius }/>
               <CustomRoute path='/notaries' registrar={ Notaries }/>
               <CustomRoute path="/update-notarius/:id" registrar={ UpdateNotarius }/>
@@ -33,7 +35,9 @@ export const App: FC = () => {
               <CustomRoute path='/sign-in' anonymous={ SignIn }/>
               <CustomRoute path='/sign-up' anonymous={ SignUp }/>
 
+              <Route path='/check-power-of-attorney' component={CheckPowerOfAttorney}/>
               <Route path='/power-of-attorney/:series/:number' component={ PowerOfAttorney }/>
+
               <Route><Page404/></Route>
             </Switch>
           </Content>

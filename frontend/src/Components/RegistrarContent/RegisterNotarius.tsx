@@ -4,7 +4,6 @@ import { Button, DatePicker, Form, Input } from 'antd';
 import { len, max, min, required } from '../../utils/validators';
 import { defaultErrorHandler } from '../../utils/defaultErrorHandler';
 import { registerNotarius } from '../../dal/notaries';
-import moment from 'moment';
 import { IRegisterNotarius } from '../../lib/types';
 import { useHistory } from 'react-router-dom';
 import { convertObjWithMomentFields } from '../../utils/convertObjWithMomentFields';

@@ -31,7 +31,7 @@ export const AuthMenu: FC = () => {
         :
         <>
           <Menu.Item key='signIn'><NavLink to='/sign-in'>Увійти</NavLink></Menu.Item>
-          <Menu.Item key='signUp'><NavLink to='/sign-up'>Зареєструватися</NavLink></Menu.Item>
+          {/*<Menu.Item key='signUp'><NavLink to='/sign-up'>Зареєструватися</NavLink></Menu.Item>*/}
         </>
       }
     </Menu>
