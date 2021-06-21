@@ -9,6 +9,7 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import router from './routes/auth';
 import notariesRouter from './routes/notaries';
+import powerOfAttorneyRouter from './routes/powerOfAttorney';
 
 const app = new Koa();
 const port = process.env.PORT || 4000;
@@ -34,8 +35,10 @@ const CONFIG = {
 };
 app.use(session(CONFIG, app));
 
+
 app.use(router.routes()).use(router.allowedMethods());
 app.use(notariesRouter.routes()).use(notariesRouter.allowedMethods());
+app.use(powerOfAttorneyRouter.routes()).use(powerOfAttorneyRouter.allowedMethods());
 
 app.listen(port, () => {
   console.log(`App listening on the port ${ port }`);

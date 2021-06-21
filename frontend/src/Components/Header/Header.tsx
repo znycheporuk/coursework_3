@@ -26,6 +26,16 @@ export const Header: FC = () => {
           </Menu.Item>
         </>
         }
+        { role === 'notarius' &&
+        <>
+          <Menu.Item>
+            <NavLink to='/register-power-of-attorney'>Зареєструвати довіреність</NavLink>
+          </Menu.Item>
+          <Menu.Item>
+            <NavLink to='/power-of-attorney-table'>Довіреністі</NavLink>
+          </Menu.Item>
+        </>
+        }
 
       </Menu>
       <AuthMenu/>

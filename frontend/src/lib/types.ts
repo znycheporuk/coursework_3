@@ -44,3 +44,6 @@ export interface IPowerOfAttorney {
   createdAt?: Date
   updatedAt?: Date
 }
+export interface IPowerOfAttorneyWithNotariusData extends IPowerOfAttorney {
+  notarius: INotarius
+}
